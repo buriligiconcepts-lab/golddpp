@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gold Futures Pre-Trade Checklist</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold:#D4A847;--gold-light:#F0C84A;--gold-dim:#8a6a1f;
+    --bg:#0d0d0d;--bg2:#141414;--bg3:#1c1c1c;
+    --border:rgba(212,168,71,0.15);--border-bright:rgba(212,168,71,0.4);
+    --text:#e8e0d0;--text-dim:#7a7060;--text-mid:#a09080;
+    --green:#4caf7d;--green-bg:rgba(76,175,125,0.1);
+    --red:#e05252;--red-bg:rgba(224,82,82,0.1);
+    --amber:#D4A847;--amber-bg:rgba(212,168,71,0.1);
+    --blue:#5b8fd4;--blue-bg:rgba(91,143,212,0.1);
+    --purple:#b07fd4;--purple-bg:rgba(155,89,182,0.1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh;}
+  .ticker{background:var(--bg3);border-bottom:1px solid var(--border);padding:8px 32px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+  .tdot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  .header{background:var(--bg2);border-bottom:1px solid var(--border);padding:20px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+  .hleft{display:flex;align-items:center;gap:16px;}
+  .gdot{width:10px;height:10px;background:var(--gold);border-radius:50%;box-shadow:0 0 8px var(--gold);animation:pulse 2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 8px var(--gold)}50%{opacity:.6;box-shadow:0 0 3px var(--gold)}}
+  .htitle{font-size:15px;font-weight:600;letter-spacing:.05em;color:var(--gold);text-transform:uppercase;}
+  .hdate{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-dim);}
+  .plabel{font-family:'DM Mono',monospace;font-size:13px;color:var(--text-mid);text-align:right;}
+  .plabel span{display:block;font-size:20px;font-weight:600;color:var(--gold);font-family:'Syne',sans-serif;}
+  .pbar-out{width:120px;height:4px;background:var(--bg3);border-radius:2px;overflow:hidden;}
+  .pbar-in{height:4px;background:linear-gradient(90deg,var(--gold-dim),var(--gold-light));border-radius:2px;transition:width .4s ease;width:0%;}
+  .main{max-width:860px;margin:0 auto;padding:32px 24px;}
+  .panel{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:16px;}
+  .ptitle{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .ldot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 5px var(--green);animation:pulse 1.5s ease-in-out infinite;}
+  .adot{width:6px;height:6px;border-radius:50%;background:var(--blue);}
+  .dgrid{display:grid;gap:12px;margin-bottom:14px;}
+  .g4{grid-template-columns:repeat(4,1fr);}
+  .g5{grid-template-columns:repeat(5,1fr);}
+  .g3{grid-template-columns:repeat(3,1fr);}
+  .ditem{text-align:center;}
+  .dlabel{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:5px;}
+  .dval{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;}
+  .dsub{font-family:'DM Mono',monospace;font-size:11px;margin-top:3px;}
+  .dbadge{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:600;display:inline-block;margin-top:4px;}
+  .refrow{display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+  .refbtn{background:transparent;border:1px solid var(--border-bright);border-radius:6px;color:var(--gold);font-family:'DM Mono',monospace;font-size:11px;padding:5px 12px;cursor:pointer;transition:background .2s;display:flex;align-items:center;gap:6px;}
+  .refbtn:hover{background:var(--amber-bg);}
+  .lupd{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);}
+  .section{background:var(--bg2);border:1px solid var(--border);border-radius:12px;margin-bottom:16px;overflow:hidden;}
+  .shdr{padding:14px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
+  .sbadge{font-family:'DM Mono',monospace;font-size:10px;padding:3px 9px;border-radius:20px;font-weight:500;letter-spacing:.06em;}
+  .stitle{font-size:13px;font-weight:600;color:var(--text);letter-spacing:.03em;text-transform:uppercase;}
+  .scomplete{margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);}
+  .citem{display:flex;align-items:flex-start;gap:14px;padding:14px 20px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;user-select:none;}
+  .citem:last-child{border-bottom:none;}
+  .citem:hover{background:rgba(255,255,255,.02);}
+  .cbox{width:20px;height:20px;border:1.5px solid var(--text-dim);border-radius:5px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+  .cbox.checked{background:var(--green);border-color:var(--green);}
+  .csv{opacity:0;transition:opacity .15s;}
+  .csv.show{opacity:1;}
+  .icontent{flex:1;}
+  .ititle{font-size:14px;font-weight:500;color:var(--text);line-height:1.4;transition:color .2s;}
+  .ititle.done{color:var(--text-dim);text-decoration:line-through;}
+  .inote{font-size:12px;color:var(--text-dim);margin-top:3px;line-height:1.5;font-family:'DM Mono',monospace;}
+  .itag{font-family:'DM Mono',monospace;font-size:10px;padding:3px 8px;border-radius:4px;font-weight:500;flex-shrink:0;margin-top:2px;letter-spacing:.04em;}
+  .tag-red{background:var(--red-bg);color:var(--red);border:1px solid rgba(224,82,82,.2);}
+  .tag-green{background:var(--green-bg);color:var(--green);border:1px solid rgba(76,175,125,.2);}
+  .tag-amber{background:var(--amber-bg);color:var(--amber);border:1px solid rgba(212,168,71,.2);}
+  .tag-blue{background:var(--blue-bg);color:var(--blue);border:1px solid rgba(91,143,212,.2);}
+  .tag-purple{background:var(--purple-bg);color:var(--purple);border:1px solid rgba(155,89,182,.2);}
+  .linput{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;background:transparent;border:none;border-bottom:1px solid var(--border-bright);color:var(--text);text-align:center;width:100%;padding:2px 0;outline:none;transition:border-color .2s;}
+  .linput:focus{border-color:var(--gold);color:var(--gold);}
+  .linput::placeholder{color:var(--text-dim);}
+  .ebtn{display:inline-flex;align-items:center;gap:7px;background:var(--amber-bg);border:1px solid var(--border-bright);border-radius:7px;padding:8px 14px;color:var(--gold);font-family:'DM Mono',monospace;font-size:11px;cursor:pointer;text-decoration:none;transition:background .2s;margin-right:8px;margin-bottom:8px;}
+  .ebtn:hover{background:rgba(212,168,71,.2);}
+  .notes{background:transparent;border:none;border-top:1px solid var(--border);width:100%;padding:14px 20px;font-family:'DM Mono',monospace;font-size:12px;color:var(--text-mid);resize:none;outline:none;min-height:70px;}
+  .notes::placeholder{color:var(--text-dim);}
+  .footer{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:20px;border-top:1px solid var(--border);}
+  .rbtn{background:transparent;border:1px solid var(--border-bright);border-radius:8px;color:var(--text-dim);font-family:'DM Mono',monospace;font-size:12px;padding:8px 16px;cursor:pointer;transition:all .2s;}
+  .rbtn:hover{border-color:var(--gold);color:var(--gold);}
+  .cmsg{font-size:13px;color:var(--green);font-weight:600;opacity:0;transition:opacity .4s;letter-spacing:.04em;}
+  .cmsg.show{opacity:1;}
+  .etxt{color:var(--red);font-size:11px;font-family:'DM Mono',monospace;}
+  .srow{display:flex;justify-content:space-between;align-items:center;padding:5px 4px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:12px;}
+  .srow:last-child{border-bottom:none;}
+  .bwrap{flex:1;height:6px;background:var(--bg3);border-radius:3px;margin:0 8px;overflow:hidden;}
+  .bfill{height:6px;border-radius:3px;transition:width .5s;}
+</style>
+</head>
+<body>
+
+<div class="ticker">
+  <div style="display:flex;align-items:center;gap:6px;"><div class="tdot"></div><span>MGC / GC Gold Futures Pre-Trade Dashboard</span></div>
+  <div style="display:flex;align-items:center;gap:6px;"><span>PCR below 0.7 = bullish | 0.7-1.0 = neutral | above 1.0 = bearish</span></div>
+  <div style="display:flex;align-items:center;gap:6px;"><span>Options data via GLD — dynamic multiplier applied for gold futures price</span></div>
+</div>
+
+<div class="header">
+  <div class="hleft">
+    <div class="gdot"></div>
+    <div>
+      <div class="htitle">Gold Futures Pre-Trade Checklist</div>
+      <div class="hdate" id="hdate"></div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <div class="plabel">Completed<span id="pcnt">0 / 17</span></div>
+    <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;">
+      <div class="pbar-out"><div class="pbar-in" id="pbar"></div></div>
+      <div class="hdate" id="ppct">0% done</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- LIVE MARKET -->
+  <div class="panel">
+    <div class="ptitle"><div class="ldot"></div>Live market data</div>
+    <div class="dgrid g4">
+      <div class="ditem"><div class="dlabel">Gold price</div><div class="dval" id="gp" style="color:var(--gold)">--</div><div class="dsub" id="gc">--</div></div>
+      <div class="ditem"><div class="dlabel">Day range</div><div class="dval" id="gr" style="font-size:13px;color:var(--text)">--</div><div class="dsub" style="color:var(--text-dim)">High / Low</div></div>
+      <div class="ditem"><div class="dlabel">DXY</div><div class="dval" id="dp" style="color:var(--blue)">--</div><div class="dsub" id="dc">--</div></div>
+      <div class="ditem"><div class="dlabel">DXY signal</div><div class="dval" id="dd" style="font-size:14px;">--</div><div class="dsub" id="di" style="font-size:10px;">--</div></div>
+    </div>
+    <div class="refrow">
+      <div class="lupd" id="mupd">Fetching market data...</div>
+      <button class="refbtn" onclick="fetchAll()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        Refresh all
+      </button>
+    </div>
+  </div>
+
+  <!-- OPTIONS -->
+  <div class="panel">
+    <div class="ptitle"><div class="adot"></div>Options intelligence — GLD auto-pulled</div>
+    <div class="dgrid g5" style="margin-bottom:16px;">
+      <div class="ditem"><div class="dlabel">PCR</div><div class="dval" id="opcr" style="color:var(--gold)">--</div><div id="opcrb"></div></div>
+      <div class="ditem"><div class="dlabel">Call wall</div><div class="dval" id="ocw" style="color:var(--blue)">--</div><div class="dsub" id="ocwoi" style="color:var(--text-dim)">--</div></div>
+      <div class="ditem"><div class="dlabel">Put wall</div><div class="dval" id="opw" style="color:var(--red)">--</div><div class="dsub" id="opwoi" style="color:var(--text-dim)">--</div></div>
+      <div class="ditem"><div class="dlabel">Max pain</div><div class="dval" id="omp" style="color:var(--green)">--</div><div class="dsub" style="color:var(--text-dim)">Options magnet</div></div>
+      <div class="ditem"><div class="dlabel">Expiry</div><div class="dval" id="oexp" style="font-size:13px;color:var(--text)">--</div><div class="dsub" id="odl" style="color:var(--text-dim)">--</div></div>
+    </div>
+    <div style="margin-bottom:10px;">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:8px;">Strikes near current price</div>
+      <div id="slist"><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text-dim);">Loading options chain...</span></div>
+    </div>
+    <div class="refrow"><div class="lupd" id="oupd">Fetching options...</div></div>
+  </div>
+
+  <!-- FED WATCH -->
+  <div class="panel">
+    <div class="ptitle"><div style="width:6px;height:6px;border-radius:50%;background:var(--purple);"></div>Fed watch</div>
+    <div class="dgrid g3" style="margin-bottom:14px;">
+      <div class="ditem">
+        <div class="dlabel">Rate expectation</div>
+        <select class="linput" id="rexp" onchange="updateFed()" style="cursor:pointer;font-size:11px;color:var(--text);">
+          <option value="">Select</option>
+          <option value="cut">Cuts expected</option>
+          <option value="hold">Hold expected</option>
+          <option value="hike">Hikes expected</option>
+        </select>
+      </div>
+      <div class="ditem"><div class="dlabel">Next FOMC date</div><input class="linput" id="fdate" placeholder="e.g. May 7" style="color:var(--purple);"></div>
+      <div class="ditem"><div class="dlabel">Fed bias</div><div id="fbias" style="font-family:'DM Mono',monospace;font-size:13px;color:var(--text-dim);margin-top:6px;font-weight:500;">Select above</div></div>
+    </div>
+    <div>
+      <a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html" target="_blank" class="ebtn"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>CME FedWatch</a>
+      <a href="https://tradingeconomics.com/calendar" target="_blank" class="ebtn"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Economic Calendar</a>
+    </div>
+  </div>
+
+  <!-- TRADINGVIEW CHART -->
+  <div class="panel" style="padding:0;overflow:hidden;">
+    <div style="padding:14px 22px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+      <div class="ptitle" style="margin:0;"><div class="ldot"></div>Live MGC gold futures chart</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);">15 min — COMEX</div>
+    </div>
+    <div id="tv-chart" style="height:420px;"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+    new TradingView.widget({
+      container_id: "tv-chart",
+      symbol: "COMEX:MGC1!",
+      interval: "15",
+      timezone: "America/New_York",
+      theme: "dark",
+      style: "1",
+      locale: "en",
+      toolbar_bg: "#141414",
+      enable_publishing: false,
+      hide_top_toolbar: false,
+      hide_legend: false,
+      save_image: false,
+      backgroundColor: "#0d0d0d",
+      gridColor: "rgba(212,168,71,0.05)",
+      width: "100%",
+      height: 420,
+      studies: ["RSI@tv-basicstudies","Volume@tv-basicstudies"]
+    });
+    </script>
+  </div>
+
+  <!-- PRICE LADDER -->
+  <div class="panel" id="ladder-panel">
+    <div class="ptitle"><div class="adot"></div>Key price levels — auto updated from options data</div>
+    <div id="ladder-content">
+      <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text-dim);">Loading levels...</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="shdr"><span class="sbadge tag-blue">Step 1</span><span class="stitle">Market context</span><span class="scomplete" id="s1c">0/3</span></div>
+    <div class="citem" onclick="tog(this,1)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">Check for major news events today</div><div class="inote">Fed, CPI, NFP, geopolitical — avoid trading 30 min before and after any major release</div></div><span class="itag tag-red">must do</span></div>
+    <div class="citem" onclick="tog(this,1)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">Review overnight gold range and direction shown above</div><div class="inote">Wide overnight range = elevated volatility. Consider smaller size. Check if price gapped at open.</div></div><span class="itag tag-blue">auto</span></div>
+    <div class="citem" onclick="tog(this,1)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">Confirm DXY signal shown above and plan accordingly</div><div class="inote">DXY up = gold headwind, favor shorts. DXY down = gold tailwind, favor longs.</div></div><span class="itag tag-blue">auto</span></div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section">
+    <div class="shdr"><span class="sbadge tag-amber">Step 2</span><span class="stitle">Options intelligence</span><span class="scomplete" id="s2c">0/4</span></div>
+    <div class="citem" onclick="tog(this,2)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">Review PCR shown above and note the bias</div><div class="inote">Below 0.7 = strongly bullish. 0.7-1.0 = neutral bullish. Above 1.0 = bearish. Auto-pulled from GLD.</div></div><span class="itag tag-amber">auto</span></div>
+    <div class="citem" onclick="tog(this,2)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">Mark the call wall on your chart — multiply GLD price by 10 for gold futures</div><div class="inote">This is your resistance ceiling today. Auto-pulled from GLD options chain.</div></div><span class="itag tag-amber">auto</span></div>
+    <div class="citem" onclick="tog(this,2)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">Mark the put wall on your chart — multiply GLD price by 10 for gold futures</div><div class="inote">This is your support floor today. Strong bounce zone especially in the last week before expiry.</div></div><span class="itag tag-amber">auto</span></div>
+    <div class="citem" onclick="tog(this,2)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">Note max pain and days until expiry shown above</div><div class="inote">Under 5 days to expiry = max pain is the strongest magnet. Use as primary TP target this week.</div></div><span class="itag tag-amber">auto</span></div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section">
+    <div class="shdr"><span class="sbadge tag-purple">Step 3</span><span class="stitle">Fed watch</span><span class="scomplete" id="s3c">0/3</span></div>
+    <div class="citem" onclick="tog(this,3)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">Check CME FedWatch and select rate expectation above</div><div class="inote">Above 60% cut probability = bullish gold. Below 30% = bearish gold.</div></div><span class="itag tag-purple">macro</span></div>
+    <div class="citem" onclick="tog(this,3)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">Enter next FOMC date and assess how close it is</div><div class="inote">Within 7 days of FOMC = elevated volatility. Reduce size or avoid holding through the decision.</div></div><span class="itag tag-purple">macro</span></div>
+    <div class="citem" onclick="tog(this,3)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">Fed bias agrees with your planned trade direction</div><div class="inote">Cuts expected and going long = high confluence. Hikes expected and going short = high confluence.</div></div><span class="itag tag-purple">macro</span></div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section">
+    <div class="shdr"><span class="sbadge tag-green">Step 4</span><span class="stitle">Chart analysis — 30min then 15min</span><span class="scomplete" id="s4c">0/4</span></div>
+    <div class="citem" onclick="tog(this,4)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">Identify the 30min swing high and swing low</div><div class="inote">This is your HTF leg. Fib retracement goes from this swing high to swing low.</div></div><span class="itag tag-green">chart</span></div>
+    <div class="citem" onclick="tog(this,4)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">Draw fib retracement and mark 50% to 78.6% zone</div><div class="inote">Only look for entries inside this band. No zone = no trade. Wait for price to come to you.</div></div><span class="itag tag-green">chart</span></div>
+    <div class="citem" onclick="tog(this,4)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">Identify active FVGs on the 15min chart and note direction</div><div class="inote">Bearish FVG = short bias. Bullish FVG = long bias. Note exact price range of each active FVG.</div></div><span class="itag tag-green">chart</span></div>
+    <div class="citem" onclick="tog(this,4)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">Mark recent 15min pivot highs and lows</div><div class="inote">These are your sweep targets for entry and TP levels. Minimum 3 candles each side.</div></div><span class="itag tag-green">chart</span></div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="section">
+    <div class="shdr"><span class="sbadge tag-red">Step 5</span><span class="stitle">Trade filter — before every entry</span><span class="scomplete" id="s5c">0/3</span></div>
+    <div class="citem" onclick="tog(this,5)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">FVG direction agrees with PCR bias, DXY, and Fed outlook</div><div class="inote">All four agree = max confidence. Three of four = take it. Two or less = skip or reduce size.</div></div><span class="itag tag-red">must check</span></div>
+    <div class="citem" onclick="tog(this,5)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">Entry price is inside the 50% to 78.6% fib zone</div><div class="inote">If price is outside the zone put the chart down and wait. The zone comes to you.</div></div><span class="itag tag-red">must check</span></div>
+    <div class="citem" onclick="tog(this,5)"><div class="cbox"><svg class="csv" width="12" height="12" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="icontent"><div class="ititle">TP target is not blocked by a major options wall</div><div class="inote">TP above a huge call wall or below a huge put wall = tighten TP or skip the trade entirely.</div></div><span class="itag tag-red">must check</span></div>
+    <textarea class="notes" placeholder="Session notes — trade ideas, key levels, observations..."></textarea>
+  </div>
+
+  <div class="footer">
+    <div class="cmsg" id="cmsg">All checks done — you are ready to trade</div>
+    <button class="rbtn" onclick="resetAll()">Reset for new session</button>
+  </div>
+
+</div>
+
+<script>
+  const counts={1:0,2:0,3:0,4:0,5:0};
+  const totals={1:3,2:4,3:3,4:4,5:3};
+  const grand=17;
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const n=new Date();
+  document.getElementById('hdate').textContent=days[n.getDay()]+', '+months[n.getMonth()]+' '+n.getDate()+', '+n.getFullYear();
+
+  async function fetchMarket() {
+    try {
+      const r = await fetch('/api/market');
+      const d = await r.json();
+      if (d.error) throw new Error(d.error);
+      const gc = d.gold.price - d.gold.prev;
+      const gcp = gc / d.gold.prev * 100;
+      document.getElementById('gp').textContent = '$' + d.gold.price.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+      document.getElementById('gc').textContent = (gc>=0?'+':'')+gc.toFixed(2)+' ('+(gcp>=0?'+':'')+gcp.toFixed(2)+'%)';
+      document.getElementById('gc').style.color = gc>=0?'var(--green)':'var(--red)';
+      document.getElementById('gr').textContent = '$'+d.gold.low.toLocaleString()+' / $'+d.gold.high.toLocaleString();
+      const dc = d.dxy.price - d.dxy.prev;
+      const dcp = dc / d.dxy.prev * 100;
+      document.getElementById('dp').textContent = d.dxy.price.toFixed(2);
+      document.getElementById('dc').textContent = (dc>=0?'+':'')+dc.toFixed(2)+' ('+(dcp>=0?'+':'')+dcp.toFixed(2)+'%)';
+      document.getElementById('dc').style.color = dc>=0?'var(--red)':'var(--green)';
+      if (dc > 0.15) {
+        document.getElementById('dd').textContent='UP'; document.getElementById('dd').style.color='var(--red)';
+        document.getElementById('di').textContent='Gold headwind'; document.getElementById('di').style.color='var(--red)';
+      } else if (dc < -0.15) {
+        document.getElementById('dd').textContent='DOWN'; document.getElementById('dd').style.color='var(--green)';
+        document.getElementById('di').textContent='Gold tailwind'; document.getElementById('di').style.color='var(--green)';
+      } else {
+        document.getElementById('dd').textContent='FLAT'; document.getElementById('dd').style.color='var(--amber)';
+        document.getElementById('di').textContent='Trade both sides'; document.getElementById('di').style.color='var(--amber)';
+      }
+      document.getElementById('mupd').textContent='Market updated '+new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+    } catch(e) {
+      document.getElementById('mupd').innerHTML='<span class="etxt">Market error: '+e.message+'</span>';
+    }
+  }
+
+  function renderLadder(d) {
+    if (!d.callWall && !d.putWall && !d.maxPain) {
+      document.getElementById('ladder-content').innerHTML = '<div style="font-family:DM Mono,monospace;font-size:12px;color:var(--text-dim);">Waiting for options data...</div>';
+      return;
+    }
+
+    const goldPrice = d.goldPrice || (d.gldPrice ? (d.gldPrice * (d.multiplier || 11.15)) : null);
+
+    const levels = [];
+    if (d.callWall)  levels.push({ price: parseFloat(d.callWall),  label: 'Call wall — resistance', color: '#5b8fd4', bg: 'rgba(91,143,212,0.08)',  border: 'rgba(91,143,212,0.3)',  tag: 'CALLS',   note: 'Big money selling here. Price struggles to break above.' });
+    if (d.maxPain)   levels.push({ price: parseFloat(d.maxPain),   label: 'Max pain — options magnet', color: '#D4A847', bg: 'rgba(212,168,71,0.08)', border: 'rgba(212,168,71,0.3)', tag: 'MAX PAIN', note: 'Price gravitates here by expiration. Strongest last 5 days.' });
+    if (d.putWall)   levels.push({ price: parseFloat(d.putWall),   label: 'Put wall — support',    color: '#e05252', bg: 'rgba(224,82,82,0.08)',    border: 'rgba(224,82,82,0.3)',   tag: 'PUTS',    note: 'Big money buying here. Strong bounce zone.' });
+    if (goldPrice)   levels.push({ price: goldPrice,               label: 'Current gold price',    color: '#4caf7d', bg: 'rgba(76,175,125,0.08)',   border: 'rgba(76,175,125,0.3)',  tag: 'PRICE',   note: 'Live gold futures price.' });
+
+    levels.sort((a, b) => b.price - a.price);
+
+    const allPrices = levels.map(l => l.price).filter(Boolean);
+    const minPrice  = Math.min(...allPrices);
+    const maxPrice  = Math.max(...allPrices);
+    const range     = maxPrice - minPrice || 100;
+
+    let html = '<div style="position:relative;padding:8px 0;">';
+
+    levels.forEach((lvl, idx) => {
+      const pct    = range > 0 ? ((lvl.price - minPrice) / range * 100) : 50;
+      const isPrice = lvl.tag === 'PRICE';
+      html += `
+        <div style="display:flex;align-items:center;gap:14px;padding:10px 14px;margin-bottom:8px;background:${lvl.bg};border:1px solid ${lvl.border};border-radius:8px;${isPrice ? 'border-left:3px solid '+lvl.color+';' : ''}">
+          <div style="width:4px;height:40px;background:${lvl.color};border-radius:2px;flex-shrink:0;"></div>
+          <div style="flex:1;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
+              <span style="font-family:'DM Mono',monospace;font-size:16px;font-weight:600;color:${lvl.color};">$${lvl.price.toLocaleString()}</span>
+              <span style="font-family:'DM Mono',monospace;font-size:10px;padding:2px 7px;border-radius:10px;background:${lvl.bg};color:${lvl.color};border:1px solid ${lvl.border};">${lvl.tag}</span>
+            </div>
+            <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px;">${lvl.label}</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);">${lvl.note}</div>
+          </div>
+          <div style="width:80px;text-align:right;">
+            ${lvl.tag === 'CALLS' && d.callWallOI ? '<div style="font-family:DM Mono,monospace;font-size:11px;color:var(--text-dim);">'+Number(d.callWallOI).toLocaleString()+'</div><div style="font-family:DM Mono,monospace;font-size:10px;color:var(--text-dim);">open interest</div>' : ''}
+            ${lvl.tag === 'PUTS'  && d.putWallOI  ? '<div style="font-family:DM Mono,monospace;font-size:11px;color:var(--text-dim);">'+Number(d.putWallOI).toLocaleString()+'</div><div style="font-family:DM Mono,monospace;font-size:10px;color:var(--text-dim);">open interest</div>' : ''}
+            ${lvl.tag === 'MAX PAIN' ? '<div style="font-family:DM Mono,monospace;font-size:11px;color:var(--amber);">'+(d.daysLeft||'?')+' days</div><div style="font-family:DM Mono,monospace;font-size:10px;color:var(--text-dim);">to expiry</div>' : ''}
+          </div>
+        </div>`;
+    });
+
+    html += '</div>';
+
+    if (goldPrice && d.callWall && d.putWall) {
+      const cw = parseFloat(d.callWall);
+      const pw = parseFloat(d.putWall);
+      const mp = d.maxPain ? parseFloat(d.maxPain) : null;
+      const distToCall = cw - goldPrice;
+      const distToPut  = goldPrice - pw;
+      let bias = '';
+      if (goldPrice > mp) {
+        bias = '<span style="color:var(--red);">Price is ABOVE max pain — institutions may push price DOWN toward $'+mp+' by expiry</span>';
+      } else if (goldPrice < mp) {
+        bias = '<span style="color:var(--green);">Price is BELOW max pain — institutions may push price UP toward $'+mp+' by expiry</span>';
+      } else {
+        bias = '<span style="color:var(--amber);">Price is AT max pain — neutral zone</span>';
+      }
+      html += `<div style="background:rgba(212,168,71,0.06);border:1px solid rgba(212,168,71,0.2);border-radius:8px;padding:12px 16px;margin-top:4px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:6px;">Institutional bias today</div>
+        <div style="font-family:'DM Mono',monospace;font-size:12px;line-height:1.6;">${bias}</div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);margin-top:4px;">
+          Distance to call wall: <span style="color:var(--blue);">$${distToCall.toFixed(0)}</span> &nbsp;|&nbsp;
+          Distance to put wall: <span style="color:var(--red);">$${distToPut.toFixed(0)}</span>
+        </div>
+      </div>`;
+    }
+
+    document.getElementById('ladder-content').innerHTML = html;
+  }
+
+  async function fetchOptions() {
+    document.getElementById('oupd').textContent='Fetching options...';
+    try {
+      const r = await fetch('/api/options');
+      const d = await r.json();
+      if (d.error) throw new Error(d.error);
+      document.getElementById('opcr').textContent = d.pcr > 0 ? d.pcr.toFixed(2) : 'N/A';
+      if (d.pcr > 0) renderPCR(d.pcr);
+      document.getElementById('ocw').textContent   = d.callWall  ? '$'+d.callWall  : '--';
+      document.getElementById('ocwoi').textContent = d.callWallOI? d.callWallOI.toLocaleString()+' OI' : '--';
+      document.getElementById('opw').textContent   = d.putWall   ? '$'+d.putWall   : '--';
+      document.getElementById('opwoi').textContent = d.putWallOI ? d.putWallOI.toLocaleString()+' OI'  : '--';
+      document.getElementById('omp').textContent   = d.maxPain   ? '$'+d.maxPain   : '--';
+      document.getElementById('oexp').textContent = d.expiry || '--';
+      document.getElementById('odl').textContent  = d.daysLeft  ? d.daysLeft+' days left'    : '--';
+      document.getElementById('odl').style.color  = d.daysLeft<=5?'var(--red)':'var(--text-dim)';
+      renderStrikes(d.strikes, d.gldPrice, d.multiplier, d.goldPrice);
+      renderLadder(d);
+      document.getElementById('oupd').textContent='Options updated '+new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+    } catch(e) {
+      document.getElementById('oupd').innerHTML='<span class="etxt">Options error: '+e.message+'</span>';
+      document.getElementById('slist').innerHTML='<span class="etxt">Could not load options chain</span>';
+    }
+  }
+
+  function renderPCR(pcr) {
+    const el=document.getElementById('opcrb');
+    let text,bg,color;
+    if      (pcr<0.7) {text='STRONGLY BULLISH';bg='rgba(76,175,125,.15)';color='#4caf7d';}
+    else if (pcr<1.0) {text='NEUTRAL BULLISH'; bg='rgba(212,168,71,.15)'; color='#D4A847';}
+    else if (pcr<1.3) {text='NEUTRAL BEARISH'; bg='rgba(212,168,71,.15)'; color='#D4A847';}
+    else              {text='STRONGLY BEARISH';bg='rgba(224,82,82,.15)';  color='#e05252';}
+    el.innerHTML='<span class="dbadge" style="background:'+bg+';color:'+color+';border:1px solid '+color+'33">'+text+'</span>';
+  }
+
+  function renderStrikes(strikes, gldPrice, multiplier, goldPrice) {
+    if (!strikes || !strikes.length) { document.getElementById('slist').innerHTML='<span class="etxt">No strike data</span>'; return; }
+    const mult = multiplier || 11.15;
+    const gp   = goldPrice || (gldPrice * mult);
+    const maxOI = Math.max(...strikes.map(s=>Math.max(s.callOI,s.putOI)),1);
+    let html = '<div style="display:flex;justify-content:space-between;font-family:DM Mono,monospace;font-size:10px;color:var(--text-dim);margin-bottom:6px;padding:0 4px;"><span style="width:60px;text-align:right;">Call OI</span><span style="flex:1;text-align:center;">Gold futures price</span><span style="width:60px;">Put OI</span></div>';
+    strikes.forEach(s => {
+      const fs = s.futuresStrike || parseFloat((s.strike * mult).toFixed(0));
+      const isPrice = Math.abs(fs - gp) < (gp * 0.005);
+      html += '<div class="srow" style="'+(isPrice?'background:rgba(212,168,71,.05);border-radius:4px;':'')+'">';
+      html += '<div style="width:60px;text-align:right;font-size:11px;color:var(--blue)">'+(s.callOI>0?s.callOI.toLocaleString():'')+'</div>';
+      html += '<div class="bwrap"><div class="bfill" style="width:'+Math.round(s.callOI/maxOI*100)+'%;background:var(--blue);margin-left:auto;"></div></div>';
+      html += '<div style="width:70px;text-align:center;font-size:12px;'+(isPrice?'color:var(--gold);font-weight:700;':'')+'">$'+fs.toLocaleString()+(isPrice?' *':'')+'</div>';
+      html += '<div class="bwrap"><div class="bfill" style="width:'+Math.round(s.putOI/maxOI*100)+'%;background:var(--red);"></div></div>';
+      html += '<div style="width:60px;font-size:11px;color:var(--red)">'+(s.putOI>0?s.putOI.toLocaleString():'')+'</div>';
+      html += '</div>';
+    });
+    document.getElementById('slist').innerHTML = html;
+  }
+
+  function tog(el,sec) {
+    const cb=el.querySelector('.cbox'),cm=el.querySelector('.csv'),tx=el.querySelector('.ititle');
+    const checked=cb.classList.contains('checked');
+    cb.classList.toggle('checked',!checked); cm.classList.toggle('show',!checked); tx.classList.toggle('done',!checked);
+    counts[sec]+=checked?-1:1;
+    document.getElementById('s'+sec+'c').textContent=counts[sec]+'/'+totals[sec];
+    updateProg();
+  }
+
+  function updateProg() {
+    const done=Object.values(counts).reduce((a,b)=>a+b,0);
+    document.getElementById('pcnt').textContent=done+' / '+grand;
+    const pct=Math.round(done/grand*100);
+    document.getElementById('pbar').style.width=pct+'%';
+    document.getElementById('ppct').textContent=pct+'% done';
+    document.getElementById('cmsg').classList.toggle('show',done===grand);
+  }
+
+  function updateFed() {
+    const v=document.getElementById('rexp').value,el=document.getElementById('fbias');
+    if (!v){el.textContent='Select above';el.style.color='var(--text-dim)';return;}
+    if (v==='cut') {el.textContent='Bullish gold';el.style.color='var(--green)';}
+    if (v==='hold'){el.textContent='Neutral';     el.style.color='var(--amber)';}
+    if (v==='hike'){el.textContent='Bearish gold';el.style.color='var(--red)';}
+  }
+
+  function resetAll() {
+    if (!confirm('Reset for new session?')) return;
+    document.querySelectorAll('.cbox').forEach(cb=>cb.classList.remove('checked'));
+    document.querySelectorAll('.csv').forEach(cm=>cm.classList.remove('show'));
+    document.querySelectorAll('.ititle').forEach(tx=>tx.classList.remove('done'));
+    document.querySelector('.notes').value='';
+    document.getElementById('rexp').value='';
+    document.getElementById('fdate').value='';
+    document.getElementById('fbias').textContent='Select above';
+    document.getElementById('fbias').style.color='var(--text-dim)';
+    Object.keys(counts).forEach(k=>{counts[k]=0;document.getElementById('s'+k+'c').textContent='0/'+totals[k];});
+    updateProg();
+    fetchAll();
+  }
+
+  async function fetchAll() { await Promise.all([fetchMarket(), fetchOptions()]); }
+  fetchAll();
+  setInterval(fetchAll, 5*60*1000);
+</script>
+</body>
+</html>
