@@ -1194,19 +1194,12 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
         <div class="card">
           <div class="card-header"><div class="card-title">Recent block trades</div></div>
           <div class="card-body" style="display:flex;flex-direction:column;gap:5px;">
-            ${[
-              {time:'13:42',size:'$284M',side:'SELL',price:'4,847'},
-              {time:'13:18',size:'$156M',side:'BUY', price:'4,832'},
-              {time:'12:54',size:'$412M',side:'SELL',price:'4,861'},
-              {time:'12:31',size:'$198M',side:'SELL',price:'4,878'},
-              {time:'11:47',size:'$223M',side:'BUY', price:'4,819'},
-              {time:'11:12',size:'$334M',side:'SELL',price:'4,854'},
-            ].map(b=>`<div class="level-row" style="border-color:var(--border);">
-              <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);">${b.time} ET</span>
-              <span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:${b.side==='BUY'?'var(--green)':'var(--red)'};">${b.side}</span>
-              <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text);">$${b.price}</span>
-              <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);">${b.size}</span>
-            </div>`).join('')}
+            <div class="level-row"><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);">13:42 ET</span><span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:var(--red);">SELL</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text);">$4,847</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);">$284M</span></div>
+            <div class="level-row"><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);">13:18 ET</span><span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:var(--green);">BUY</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text);">$4,832</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);">$156M</span></div>
+            <div class="level-row"><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);">12:54 ET</span><span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:var(--red);">SELL</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text);">$4,861</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);">$412M</span></div>
+            <div class="level-row"><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);">12:31 ET</span><span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:var(--red);">SELL</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text);">$4,878</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);">$198M</span></div>
+            <div class="level-row"><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);">11:47 ET</span><span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:var(--green);">BUY</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text);">$4,819</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);">$223M</span></div>
+            <div class="level-row" style="border:none;"><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);">11:12 ET</span><span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:var(--red);">SELL</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text);">$4,854</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-dim);">$334M</span></div>
           </div>
         </div>
       </div>
@@ -1227,18 +1220,11 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
         <div class="card">
           <div class="card-header"><div class="card-title">Unusual options activity</div></div>
           <div class="card-body" style="display:flex;flex-direction:column;gap:5px;">
-            ${[
-              {time:'13:51',contract:'4700P',type:'PUT', size:'$18.6M',note:'Sweeping ask — bearish'},
-              {time:'13:22',contract:'4800C',type:'CALL',size:'$2.1M', note:'Near ask — neutral'},
-              {time:'12:48',contract:'4650P',type:'PUT', size:'$14.2M',note:'Block trade — bearish'},
-              {time:'12:15',contract:'4600P',type:'PUT', size:'$9.4M', note:'Sweep — bearish'},
-              {time:'11:55',contract:'4750C',type:'CALL',size:'$2.8M', note:'At ask — bullish'},
-            ].map(f=>`<div class="level-row">
-              <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);">${f.time}</span>
-              <span style="font-family:'DM Mono',monospace;font-size:11px;color:${f.type==='PUT'?'var(--red)':'var(--green)'};">${f.contract}</span>
-              <span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text);">${f.size}</span>
-              <span style="font-size:10px;color:var(--text-dim);">${f.note}</span>
-            </div>`).join('')}
+            <div class="level-row"><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);">13:51</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--red);">4700P</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text);">$18.6M</span><span style="font-size:10px;color:var(--text-dim);">Sweeping ask — bearish</span></div>
+            <div class="level-row"><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);">13:22</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--green);">4800C</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text);">$2.1M</span><span style="font-size:10px;color:var(--text-dim);">Near ask — neutral</span></div>
+            <div class="level-row"><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);">12:48</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--red);">4650P</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text);">$14.2M</span><span style="font-size:10px;color:var(--text-dim);">Block trade — bearish</span></div>
+            <div class="level-row"><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);">12:15</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--red);">4600P</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text);">$9.4M</span><span style="font-size:10px;color:var(--text-dim);">Sweep — bearish</span></div>
+            <div class="level-row" style="border:none;"><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-dim);">11:55</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--green);">4750C</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text);">$2.8M</span><span style="font-size:10px;color:var(--text-dim);">At ask — bullish</span></div>
           </div>
         </div>
       </div>
@@ -1275,15 +1261,22 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
         <div class="card">
           <div class="card-header"><div class="card-title">YTD performance 2026</div></div>
           <div class="card-body" style="display:flex;flex-direction:column;gap:5px;">
-            ${[['January 2026','+4.20%',true],['February 2026','+3.80%',true],['March 2026','+2.60%',true],['April 2026 MTD','-1.80%',false],['YTD Total','+8.52%',true]].map(([m,v,pos])=>`
-            <div class="level-row"><span style="font-size:12px;color:var(--text);">${m}</span><span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:${m.includes('Total')?'700':'500'};color:${pos?'var(--green)':'var(--red)'};">${v}</span></div>`).join('')}
+            <div class="level-row"><span style="font-size:12px;color:var(--text);">January 2026</span><span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--green);">+4.20%</span></div>
+            <div class="level-row"><span style="font-size:12px;color:var(--text);">February 2026</span><span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--green);">+3.80%</span></div>
+            <div class="level-row"><span style="font-size:12px;color:var(--text);">March 2026</span><span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--green);">+2.60%</span></div>
+            <div class="level-row"><span style="font-size:12px;color:var(--text);">April 2026 MTD</span><span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--red);">-1.80%</span></div>
+            <div class="level-row" style="border:none;"><span style="font-size:12px;color:var(--text);font-weight:600;">YTD Total</span><span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--green);">+8.52%</span></div>
           </div>
         </div>
         <div class="card">
           <div class="card-header"><div class="card-title">Seasonal context</div></div>
           <div class="card-body" style="display:flex;flex-direction:column;gap:5px;">
-            ${[['10yr April avg','+0.80%',true],['Best month','August (+2.4%)',true],['Worst month','November (-0.8%)',false],['Q1 avg','+2.10%',true],['Q2 avg','+0.40%',true],['1-year return','+42.64%',true]].map(([l,v,pos])=>`
-            <div class="level-row"><span style="font-size:12px;color:var(--text-dim);">${l}</span><span style="font-family:'DM Mono',monospace;font-size:12px;color:${pos?'var(--green)':'var(--red)'};">${v}</span></div>`).join('')}
+            <div class="level-row"><span style="font-size:12px;color:var(--text-dim);">10yr April avg</span><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--green);">+0.80%</span></div>
+            <div class="level-row"><span style="font-size:12px;color:var(--text-dim);">Best month</span><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--green);">August (+2.4%)</span></div>
+            <div class="level-row"><span style="font-size:12px;color:var(--text-dim);">Worst month</span><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--red);">November (-0.8%)</span></div>
+            <div class="level-row"><span style="font-size:12px;color:var(--text-dim);">Q1 avg</span><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--green);">+2.10%</span></div>
+            <div class="level-row"><span style="font-size:12px;color:var(--text-dim);">Q2 avg</span><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--green);">+0.40%</span></div>
+            <div class="level-row" style="border:none;"><span style="font-size:12px;color:var(--text-dim);">1-year return</span><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--green);">+42.64%</span></div>
           </div>
         </div>
       </div>
@@ -1463,8 +1456,23 @@ function buildTV2(intv,btn) {
 // ═══════════════════════════════════════════════
 async function fetchMarket() {
   try {
-    const r = await fetch('/api/market?ticker='+encodeURIComponent(activeTicker.yf));
-    const d = await r.json();
+    // Try Vercel function first, fall back to direct corsproxy
+    let d;
+    try {
+      const r = await fetch('/api/market?ticker='+encodeURIComponent(activeTicker.yf));
+      const text = await r.text();
+      if(text.startsWith('{')) { d = JSON.parse(text); }
+      else throw new Error('not json');
+    } catch(e) {
+      const P = 'https://corsproxy.io/?';
+      const [gR,dR] = await Promise.all([
+        fetch(P+encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/'+encodeURIComponent(activeTicker.yf)+'?interval=1d&range=2d')),
+        fetch(P+encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?interval=1d&range=2d'))
+      ]);
+      const gj=await gR.json(), dj=await dR.json();
+      const gq=gj.chart.result[0], dq=dj.chart.result[0];
+      d = { gold:{ price:gq.meta.regularMarketPrice, prev:gq.meta.previousClose||gq.meta.chartPreviousClose, high:gq.meta.regularMarketDayHigh, low:gq.meta.regularMarketDayLow }, dxy:{ price:dq.meta.regularMarketPrice, prev:dq.meta.previousClose||dq.meta.chartPreviousClose } };
+    }
     if(d.error) throw new Error(d.error);
     marketData = d;
     const gc=d.gold.price-d.gold.prev, gcp=gc/d.gold.prev*100;
@@ -1503,9 +1511,17 @@ async function fetchMarket() {
 // ═══════════════════════════════════════════════
 async function fetchOptions() {
   try {
-    const r = await fetch('/api/options?opt='+encodeURIComponent(activeTicker.opt));
-    const d = await r.json();
-    if(d.error) throw new Error(d.error);
+    // Try Vercel function first, fall back to direct corsproxy
+    let d;
+    try {
+      const r = await fetch('/api/options?opt='+encodeURIComponent(activeTicker.opt));
+      const text = await r.text();
+      if(text.startsWith('{')) { d = JSON.parse(text); }
+      else throw new Error('not json');
+    } catch(e) {
+      d = await fetchOptionsDirect();
+    }
+    if(!d || d.error) throw new Error(d ? d.error : 'No data');
     optionsData = d;
 
     // Update all options displays
@@ -1541,6 +1557,81 @@ async function fetchOptions() {
   } catch(e) {
     console.log('Options error:', e.message);
   }
+}
+
+// Direct fallback using corsproxy when Vercel functions unavailable
+async function fetchOptionsDirect() {
+  const P = 'https://corsproxy.io/?';
+  const AK = 'PKFU6MJS2V6HW3GMI4H5LVPX4Y';
+  const AS = '9KEdGyUZrpQzsCgP4Y5Y2nKpiJHK7KhaGv865fn2t23y';
+  const opt = activeTicker.opt || 'GLD';
+  const [gldR, gcR] = await Promise.all([
+    fetch(P+encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/'+opt+'?interval=1d&range=1d')),
+    fetch(P+encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/GC%3DF?interval=1d&range=1d'))
+  ]);
+  const gldJ=await gldR.json(), gcJ=await gcR.json();
+  const gldPrice=gldJ.chart.result[0].meta.regularMarketPrice;
+  const goldPrice=gcJ.chart.result[0].meta.regularMarketPrice;
+  const multiplier=opt==='GLD'?(goldPrice/gldPrice):1;
+  const expiry=getNextFriday();
+  const expiryStr=expiry.toISOString().split('T')[0];
+  const daysLeft=Math.ceil((expiry-new Date())/(1000*60*60*24));
+  const alpR=await fetch(P+encodeURIComponent('https://data.alpaca.markets/v1beta1/options/snapshots/'+opt+'?expiration_date='+expiryStr+'&limit=1000'),
+    {headers:{'APCA-API-KEY-ID':AK,'APCA-API-SECRET-KEY':AS}});
+  if(!alpR.ok) throw new Error('Alpaca '+alpR.status);
+  const alpJ=await alpR.json();
+  const snaps=alpJ.snapshots||{};
+  let calls={},puts={},totalCallOI=0,totalPutOI=0,callG={},putG={};
+  Object.entries(snaps).forEach(([sym,snap])=>{
+    const oi=snap.openInterest||snap.open_interest||0;
+    const gamma=snap.greeks?(snap.greeks.gamma||0):0;
+    let strike=snap.details?snap.details.strikePrice:null;
+    let type=snap.details?snap.details.optionType:null;
+    if(!strike||!type){const m=sym.match(/([CP])(\d{8})$/);if(m){type=m[1]==='C'?'call':'put';strike=parseInt(m[2])/1000;}}
+    if(!strike||!type)return;
+    const w=oi>0?oi:1;
+    if(type==='call'){calls[strike]=(calls[strike]||0)+w;totalCallOI+=w;if(!callG[strike])callG[strike]={g:0,n:0};callG[strike].g+=gamma*w;callG[strike].n+=w;}
+    else{puts[strike]=(puts[strike]||0)+w;totalPutOI+=w;if(!putG[strike])putG[strike]={g:0,n:0};putG[strike].g+=gamma*w;putG[strike].n+=w;}
+  });
+  const pcr=totalCallOI>0?totalPutOI/totalCallOI:0;
+  const callArr=Object.entries(calls).map(([s,oi])=>({strike:parseFloat(s),oi})).sort((a,b)=>a.strike-b.strike);
+  const putArr=Object.entries(puts).map(([s,oi])=>({strike:parseFloat(s),oi})).sort((a,b)=>a.strike-b.strike);
+  const callsAbove=callArr.filter(c=>c.strike>=gldPrice).sort((a,b)=>b.oi-a.oi);
+  const putsBelow=putArr.filter(p=>p.strike<=gldPrice).sort((a,b)=>b.oi-a.oi);
+  const maxPain=calcMaxPain(calls,puts);
+  const allS=[...new Set([...callArr.map(c=>c.strike),...putArr.map(p=>p.strike)])].sort((a,b)=>a-b);
+  const strikes=[...allS.filter(s=>s<=gldPrice).slice(-6),...allS.filter(s=>s>gldPrice).slice(0,6)]
+    .map(s=>({strike:s,futuresStrike:parseFloat((s*multiplier).toFixed(0)),callOI:calls[s]||0,putOI:puts[s]||0}));
+  const gexByStrike=allS.map(s=>{
+    const cg=callG[s]?callG[s].g/Math.max(callG[s].n,1):0;
+    const pg=putG[s]?putG[s].g/Math.max(putG[s].n,1):0;
+    const gex=((cg*(calls[s]||0))-(pg*(puts[s]||0)))*100*gldPrice/1e6;
+    return{strike:s,futuresStrike:parseFloat((s*multiplier).toFixed(0)),gex:parseFloat(gex.toFixed(3)),callOI:calls[s]||0,putOI:puts[s]||0};
+  });
+  const oiStrikes=allS.filter(s=>s>=gldPrice*.88&&s<=gldPrice*1.12);
+  return{
+    pcr:parseFloat(pcr.toFixed(2)),totalCallOI,totalPutOI,
+    callWall:callsAbove.length>0?(callsAbove[0].strike*multiplier).toFixed(0):null,
+    callWallOI:callsAbove.length>0?callsAbove[0].oi:0,
+    putWall:putsBelow.length>0?(putsBelow[0].strike*multiplier).toFixed(0):null,
+    putWallOI:putsBelow.length>0?putsBelow[0].oi:0,
+    maxPain:maxPain?(maxPain*multiplier).toFixed(0):null,
+    gldPrice,goldPrice,multiplier:parseFloat(multiplier.toFixed(4)),
+    expiry:expiry.toLocaleDateString('en-US',{month:'short',day:'numeric'}),
+    daysLeft,strikes,gexByStrike,
+    oiChartData:oiStrikes.map(s=>({strike:s,futuresStrike:parseFloat((s*multiplier).toFixed(0)),callOI:calls[s]||0,putOI:puts[s]||0}))
+  };
+}
+
+function getNextFriday(){const d=new Date();while(d.getDay()!==5)d.setDate(d.getDate()+1);return new Date(d);}
+function calcMaxPain(calls,puts){
+  const all=[...new Set([...Object.keys(calls),...Object.keys(puts)])].map(Number).sort((a,b)=>a-b);
+  let minP=Infinity,best=all[0]||0;
+  all.forEach(t=>{let pain=0;
+    Object.entries(calls).forEach(([s,oi])=>{const st=parseFloat(s);if(t>st)pain+=(t-st)*oi;});
+    Object.entries(puts).forEach(([s,oi])=>{const st=parseFloat(s);if(t<st)pain+=(st-t)*oi;});
+    if(pain<minP){minP=pain;best=t;}});
+  return best;
 }
 
 function renderPCRBadge(pcr, elId) {
